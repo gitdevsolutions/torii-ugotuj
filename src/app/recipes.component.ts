@@ -8,6 +8,7 @@ import { HttpClient } from "@angular/common/http";
     <div *ngFor="let recipe of recipes">
       <img [src]="recipe.image">
       {{recipe.name}}
+      <button [routerLink]="['/recipes', recipe.id]">Szczegoly</button>
     </div>
   `,
   styles: []

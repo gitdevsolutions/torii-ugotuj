@@ -5,11 +5,25 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: 'recipe',
   template: `
-    <p>
-      recipe works!
-    </p>
-    {{recipe.name}}
-    {{recipe.products | json }}
+    <div *ngIf="recipe">
+      <h3>{{recipe.name}}</h3>
+      <img [src]="recipe.image">    
+      <hr>
+        <button>-</button>
+        <input type="number" value="2">
+        <button>+</button>
+      <hr>
+      <table>
+        <tbody>
+          <tr *ngFor="let product of recipe.products">
+            <td>{{product.amount}}{{product.unit}}</td>
+            <td>{{product.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+    </div>
+    <button [routerLink]="['/recipes']">Powrot</button>
   `,
   styles: []
 })
@@ -18,7 +32,7 @@ export class RecipeComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private http: HttpClient) { }
 
-  recipe = {}
+  recipe
 
   fetchRecipe(id) {
     this.http.get('http://localhost:3000/recipes/' + id + '?_embed=products')
