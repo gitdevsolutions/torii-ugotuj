@@ -27,6 +27,10 @@ import { HttpClient } from "@angular/common/http";
       <hr>
     </div>
     <button [routerLink]="['/recipes']">Powrot</button>
+    <button [routerLink]="['/orders/create']" [queryParams]="{
+      portions: this.portions,
+      recipe: this.recipe && this.recipe.id
+    }">Zamow</button>
   `,
   styles: []
 })

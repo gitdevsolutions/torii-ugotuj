@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { Routing } from "./app.routing";
 import { RecipesComponent } from './recipes.component';
 import { RecipeComponent } from './recipe.component';
+import { NewOrderComponent } from './new-order.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipesComponent,
-    RecipeComponent
+    RecipeComponent,
+    NewOrderComponent
   ],
   imports: [
     BrowserModule,
