@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
       {{recipe.description}}   
       <hr>
         <button (click)="removePortion()"> - </button>
-        <input type="number" [(ngModel)]="portions">
+        <input type="number" [ngModel]="portions" (ngModelChange)="setPortions($event)">
         <button (click)="addPortion()"> + </button>
       <hr>
       <table>
@@ -21,7 +21,9 @@ import { HttpClient } from "@angular/common/http";
             <td>{{product.name}}</td>
           </tr>
         </tbody>
-      </table>
+      </table>     
+      <hr>
+      Razem do zaplaty: {{calculateTotal()}}
       <hr>
     </div>
     <button [routerLink]="['/recipes']">Powrot</button>
@@ -35,14 +37,30 @@ export class RecipeComponent implements OnInit {
 
   portions = 2
 
-  addPortion(){
-    this.portions += 1
+  addPortion() {
+    this.setPortions(this.portions + 1)
   }
 
-  removePortion(){
-    if(this.portions > 1){
-      this.portions -= 1
+  calculateTotal() {
+    let total = 0
+    if (this.recipe && this.recipe.products) {
+      this.recipe.products.forEach(product => {
+        total += product.unit_price * this.portions
+      })
     }
+    return total
+  }
+
+  setPortions(portions = 2) {
+    if (this.portions <= 0) {
+      this.portions = 1
+    }else{
+      this.portions = portions
+    }
+  }
+
+  removePortion() {
+    this.setPortions(this.portions - 1)
   }
 
   recipe
