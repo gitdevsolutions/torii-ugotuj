@@ -4,9 +4,11 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: 'recipes',
   template: `
-    <p>
-      recipes works!
-    </p>
+    <h3>Recipes</h3>
+    <div *ngFor="let recipe of recipes">
+      <img [src]="recipe.image">
+      {{recipe.name}}
+    </div>
   `,
   styles: []
 })
