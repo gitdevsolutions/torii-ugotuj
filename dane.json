@@ -1,43 +1,94 @@
 {
-    "users":[
-        { "id":1, "email":"demo@demo", "password":"demo"}
-    ],
-    "recipes":[
-        { 
-            "id":1, 
-            "name":"Fasolowa", 
-            "description":"Dobra zupa",
-            "image":"http://via.placeholder.com/200x200",
-            "price":12,
-            "time": 15    
-        }
-    ],
-    "products":[
+  "users": [
+    {
+      "id": 1,
+      "email": "demo@demo",
+      "password": "demo"
+    }
+  ],
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Fasolowa",
+      "description": "Dobra zupa",
+      "image": "http://via.placeholder.com/200x200",
+      "price": 12,
+      "time": 15
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "recipeId": 1,
+      "name": "Fasola",
+      "unit": "g",
+      "amount": "50",
+      "unit_price": 2.4
+    },
+    {
+      "id": 2,
+      "recipeId": 1,
+      "name": "Makaron",
+      "unit": "g",
+      "amount": "250",
+      "unit_price": 5
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "portions": 2,
+      "status": "new",
+      "productsIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "userId": 1,
+      "portions": "2",
+      "products": [
         {
-            "id":1, 
-            "recipeId":1,
-            "name":"Fasola", 
-            "unit":"g", 
-            "amount":"50",
-            "unit_price": 2.4
+          "id": 1,
+          "recipeId": 1,
+          "name": "Fasola",
+          "unit": "g",
+          "amount": "50",
+          "unit_price": 2.4,
+          "selected": true
+        }
+      ],
+      "total": 4.8,
+      "status": "new",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "portions": "6",
+      "products": [
+        {
+          "id": 1,
+          "recipeId": 1,
+          "name": "Fasola",
+          "unit": "g",
+          "amount": "50",
+          "unit_price": 2.4,
+          "selected": true
         },
         {
-            "id":2, 
-            "recipeId":1,
-            "name":"Makaron", 
-            "unit":"g", 
-            "amount":"250",
-            "unit_price": 5
+          "id": 2,
+          "recipeId": 1,
+          "name": "Makaron",
+          "unit": "g",
+          "amount": "250",
+          "unit_price": 5,
+          "selected": true
         }
-
-    ],
-    "orders":[
-        {
-            "id":1, 
-            "userId":1, 
-            "portions":2, 
-            "status":"new",
-            "productsIds":[1,2]
-        }
-    ]
+      ],
+      "total": 44.4,
+      "status": "new",
+      "id": 3
+    }
+  ]
 }
