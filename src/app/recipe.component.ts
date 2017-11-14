@@ -7,16 +7,17 @@ import { HttpClient } from "@angular/common/http";
   template: `
     <div *ngIf="recipe">
       <h3>{{recipe.name}}</h3>
-      <img [src]="recipe.image">    
+      <img [src]="recipe.image">
+      {{recipe.description}}   
       <hr>
-        <button>-</button>
-        <input type="number" value="2">
-        <button>+</button>
+        <button (click)="removePortion()"> - </button>
+        <input type="number" [(ngModel)]="portions">
+        <button (click)="addPortion()"> + </button>
       <hr>
       <table>
         <tbody>
           <tr *ngFor="let product of recipe.products">
-            <td>{{product.amount}}{{product.unit}}</td>
+            <td>{{product.amount * portions}}{{product.unit}}</td>
             <td>{{product.name}}</td>
           </tr>
         </tbody>
@@ -31,6 +32,18 @@ export class RecipeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private http: HttpClient) { }
+
+  portions = 2
+
+  addPortion(){
+    this.portions += 1
+  }
+
+  removePortion(){
+    if(this.portions > 1){
+      this.portions -= 1
+    }
+  }
 
   recipe
 
